@@ -3,6 +3,7 @@ import LineChart from './LineCharts'
 import BarCharts from './BarCharts'
 import AntPicharts from './AntPicharts'
 import Linechart from './Linechart'
+import TreeMap from './TreeMap'
 
 const hiroBox = [
   { id: 1, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
@@ -120,8 +121,19 @@ function Dashboard() {
           </div>
         </div>
         <div className="w-full  flex md:flex-row flex-col items-center gap-4 px-[20px]">
-          <div className=" w-full h-[500px] bg-white rounded-xl shadow-xl  ">
+          <div
+            dir="rtl"
+            className=" w-full h-[500px] bg-white rounded-xl shadow-xl  "
+          >
             <Linechart />
+          </div>
+        </div>
+        <div className="w-full  flex md:flex-row flex-col items-center gap-4 px-[20px]">
+          <div
+            dir="rtl"
+            className=" w-full h-[1000px] bg-white rounded-xl shadow-xl  "
+          >
+            <TreeMap />
           </div>
         </div>
       </div>

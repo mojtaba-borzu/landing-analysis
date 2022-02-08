@@ -3,9 +3,9 @@ import ReactDOM from 'react-dom'
 import { Pie } from '@ant-design/plots'
 
 export default function DemoPie() {
-  const data = [
+  const dataitem = [
     {
-      type: 'BTC',
+      type: 'BTC ',
       value: 27,
     },
     {
@@ -29,6 +29,9 @@ export default function DemoPie() {
       value: 5,
     },
   ]
+
+  const data = ganrating(dataitem)
+
   const config = {
     appendPadding: 10,
     data,
@@ -67,3 +70,18 @@ export default function DemoPie() {
   }
   return <Pie {...config} />
 }
+function ganrating(item) {
+  let newData = item.map((item: { type: any; value: any }) => ({
+    type: `${item.type}:  ${'میلیون تومان'} ${item.value}     `,
+    value: item.value,
+  }))
+
+  return newData
+}
+
+// map(
+//   (graph: { record_date_unix: any; value: any }) => ({
+//     uv: graph.record_date_unix,
+//     pv: graph.value,
+//   })
+// )
