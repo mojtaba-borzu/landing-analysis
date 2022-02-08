@@ -1,23 +1,23 @@
-import React, { useState } from "react";
-import LineChart from "./LineCharts";
-import BarCharts from "./BarCharts";
-import Picharts from "./Picharts";
+import React, { useState } from 'react'
+import LineChart from './LineCharts'
+import BarCharts from './BarCharts'
+import AntPicharts from './AntPicharts'
 
 const hiroBox = [
-  { id: 1, label: "BTC", value: "$53,000", percend: "+5%", icons: "" },
-  { id: 2, label: "BTC", value: "$53,000", percend: "+5%", icons: "" },
-  { id: 3, label: "BTC", value: "$53,000", percend: "+5%", icons: "" },
-  { id: 4, label: "BTC", value: "$53,000", percend: "+5%", icons: "" },
-];
+  { id: 1, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
+  { id: 2, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
+  { id: 3, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
+  { id: 4, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
+]
 
 const data: any = [
-  { name: "Group A", value: 400 },
-  { name: "Group B", value: 300 },
-  { name: "Group C", value: 300 },
-  { name: "Group D", value: 200 },
-];
+  { name: 'Group A', value: 400 },
+  { name: 'Group B', value: 300 },
+  { name: 'Group C', value: 300 },
+  { name: 'Group D', value: 200 },
+]
 
-const COLORS = ["#0088FE", "#00C49F", "#FFBB28", "#FF8042", "#FF1042"];
+const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF1042']
 
 // const services = [
 //   {
@@ -107,7 +107,7 @@ function Dashboard() {
             </div>
           </div>
           <div className="md:w-7/12 w-full h-[400px] bg-white rounded-xl shadow-xl">
-            <Picharts />
+            <AntPicharts />
           </div>
         </div>
         <div className="w-full  flex md:flex-row flex-col items-center gap-4 px-[20px]">
@@ -120,7 +120,7 @@ function Dashboard() {
         </div>
       </div>
     </div>
-  );
+  )
 }
 
-export default Dashboard;
+export default Dashboard
