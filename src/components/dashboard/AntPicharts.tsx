@@ -28,66 +28,6 @@ export default function DemoPie() {
       type: 'ALP',
       value: 5,
     },
-    {
-      type: 'DDD',
-      value: 25,
-    },
-    {
-      type: 'BNB',
-      value: 18,
-    },
-    {
-      type: 'SHIB',
-      value: 15,
-    },
-    {
-      type: 'SOL',
-      value: 10,
-    },
-    {
-      type: 'ALP',
-      value: 5,
-    },
-    {
-      type: 'ETH',
-      value: 25,
-    },
-    {
-      type: 'BNB',
-      value: 18,
-    },
-    {
-      type: 'SHIB',
-      value: 15,
-    },
-    {
-      type: 'SOL',
-      value: 10,
-    },
-    {
-      type: 'ALP',
-      value: 5,
-    },
-    {
-      type: 'ETH',
-      value: 25,
-    },
-    {
-      type: 'BNB',
-      value: 18,
-    },
-    {
-      type: 'SHIB',
-      value: 15,
-    },
-    {
-      type: 'SOL',
-      value: 11,
-    },
-    {
-      type: 'ALP',
-      value: 6,
-    },
   ]
   const config = {
     appendPadding: 10,

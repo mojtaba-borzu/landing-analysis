@@ -2,6 +2,7 @@ import React, { useState } from 'react'
 import LineChart from './LineCharts'
 import BarCharts from './BarCharts'
 import AntPicharts from './AntPicharts'
+import Linechart from './Linechart'
 
 const hiroBox = [
   { id: 1, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
@@ -116,6 +117,11 @@ function Dashboard() {
           </div>
           <div className="md:w-1/2 w-full h-[400px] bg-white rounded-xl shadow-xl">
             <LineChart />
+          </div>
+        </div>
+        <div className="w-full  flex md:flex-row flex-col items-center gap-4 px-[20px]">
+          <div className=" w-full h-[500px] bg-white rounded-xl shadow-xl  ">
+            <Linechart />
           </div>
         </div>
       </div>

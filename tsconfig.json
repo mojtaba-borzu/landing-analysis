@@ -22,7 +22,9 @@
     "src/components/portfolio/wallet/main/LineCharts.js",
     "src/pages/whale/index.js",
     "src/components/mobile/portfolio/LineCharts.js",
-    "src/components/mobile/portfolio/BarCharts.js"
+    "src/components/mobile/portfolio/BarCharts.js",
+    "src/components/dashboard/AntHeatMap.tsx",
+    "src/components/dashboard/Linechart.js"
   ],
   "exclude": ["node_modules"]
 }
