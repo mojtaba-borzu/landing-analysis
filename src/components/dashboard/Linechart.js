@@ -4,10 +4,21 @@ import { Line } from '@ant-design/plots'
 
 export default function DemoLine() {
   const [data, setData] = useState([])
+  const [state, setState] = useState(false)
 
   useEffect(() => {
     asyncFetch()
+    setTimeout(() => {
+      setState(true)
+    }, 15000)
+    state && setState(false)
   }, [])
+
+  useEffect(() => {
+    setTimeout(() => {
+      setState(false)
+    }, 200)
+  }, [state])
 
   const asyncFetch = () => {
     fetch(
@@ -26,7 +37,7 @@ export default function DemoLine() {
     seriesField: 'name',
     yAxis: {
       label: {
-        formatter: (v) => `${(v / 10e8).toFixed(1)} B`,
+        formatter: (v) => `${(v / 10e8).toFixed(0)} B`,
       },
     },
     legend: {
@@ -37,10 +48,10 @@ export default function DemoLine() {
     animation: {
       appear: {
         animation: 'path-in',
-        duration: 5000,
+        duration: 15000,
       },
     },
   }
 
-  return <Line {...config} />
+  return !state && <Line {...config} />
 }

@@ -1,9 +1,10 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import LineChart from './LineCharts'
 import BarCharts from './BarCharts'
 import AntPicharts from './AntPicharts'
 import Linechart from './Linechart'
 import TreeMap from './TreeMap'
+import Gauge from './Gauge'
 
 const hiroBox = [
   { id: 1, label: 'BTC', value: '$53,000', percend: '+5%', icons: '' },
@@ -20,41 +21,6 @@ const data: any = [
 ]
 
 const COLORS = ['#0088FE', '#00C49F', '#FFBB28', '#FF8042', '#FF1042']
-
-// const services = [
-//   {
-//     id: 1,
-//     label: 'موضوع: خرید ارز های دیجیتال',
-//     iconUrl:
-//       'https://blog.faradars.org/wp-content/uploads/2015/07/bar-chart.jpg',
-//     caption:
-//       'بیت کوین در ماه های اخیر رکورد بی سابقه خود را شکست و به مرز ۷۰ هزار دلاری نزدیک شد اما هفته های اخیر دلخواه این ارز دیجیتال نبوده است با این وجود کارشناسان بر این باورند که این ارز می تواند به زودی رکورد ۱۰۰ هزار دلاری را بشکند.',
-//   },
-//   {
-//     id: 2,
-//     label: 'موضوع: خرید ارز های دیجیتال',
-//     iconUrl:
-//       'https://blog.faradars.org/wp-content/uploads/2015/07/bar-chart.jpg',
-//     caption:
-//       'بیت کوین در ماه های اخیر رکورد بی سابقه خود را شکست و به مرز ۷۰ هزار دلاری نزدیک شد اما هفته های اخیر دلخواه این ارز دیجیتال نبوده است با این وجود کارشناسان بر این باورند که این ارز می تواند به زودی رکورد ۱۰۰ هزار دلاری را بشکند.',
-//   },
-//   {
-//     id: 3,
-//     label: 'موضوع: خرید ارز های دیجیتال',
-//     iconUrl:
-//       'https://blog.faradars.org/wp-content/uploads/2015/07/bar-chart.jpg',
-//     caption:
-//       'بیت کوین در ماه های اخیر رکورد بی سابقه خود را شکست و به مرز ۷۰ هزار دلاری نزدیک شد اما هفته های اخیر دلخواه این ارز دیجیتال نبوده است با این وجود کارشناسان بر این باورند که این ارز می تواند به زودی رکورد ۱۰۰ هزار دلاری را بشکند.',
-//   },
-//   {
-//     id: 4,
-//     label: 'موضوع: خرید ارز های دیجیتال',
-//     iconUrl:
-//       'https://blog.faradars.org/wp-content/uploads/2015/07/bar-chart.jpg',
-//     caption:
-//       'بیت کوین در ماه های اخیر رکورد بی سابقه خود را شکست و به مرز ۷۰ هزار دلاری نزدیک شد اما هفته های اخیر دلخواه این ارز دیجیتال نبوده است با این وجود کارشناسان بر این باورند که این ارز می تواند به زودی رکورد ۱۰۰ هزار دلاری را بشکند.',
-//   },
-// ]
 
 function Dashboard() {
   return (
@@ -125,9 +91,18 @@ function Dashboard() {
             dir="rtl"
             className=" w-full h-[500px] bg-white rounded-xl shadow-xl  "
           >
+            <Gauge />
+          </div>
+        </div>
+        <div className="w-full  flex md:flex-row flex-col items-center gap-4 ">
+          <div
+            dir="rtl"
+            className=" w-full h-[500px] bg-white rounded-xl shadow-xl  "
+          >
             <Linechart />
           </div>
         </div>
+
         <div className="w-full   items-center gap-4 px-[24px] ">
           <div
             dir="rtl"
