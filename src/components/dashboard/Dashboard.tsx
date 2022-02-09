@@ -128,7 +128,7 @@ function Dashboard() {
             <Linechart />
           </div>
         </div>
-        <div className="w-full  flex md:flex-row flex-col items-center gap-4 px-[20px]">
+        <div className="w-full   items-center gap-4 px-[24px] ">
           <div
             dir="rtl"
             className=" w-full h-[1000px] bg-white rounded-xl shadow-xl  "
