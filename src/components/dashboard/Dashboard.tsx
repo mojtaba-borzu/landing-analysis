@@ -3,7 +3,7 @@ import LineChart from './LineCharts'
 import BarCharts from './BarCharts'
 import AntPicharts from './AntPicharts'
 import Linechart from './Linechart'
-import TreeMap from './TreeMap'
+import TreeMapHand from './TreeMapHand'
 import Gauge from './Gauge'
 
 const hiroBox = [
@@ -103,14 +103,14 @@ function Dashboard() {
           </div>
         </div>
 
-        <div className="w-full   items-center gap-4 px-[24px] ">
+        {/* <div className="w-full   items-center gap-4 px-[24px] ">
           <div
             dir="rtl"
             className=" w-full h-[1000px] bg-white rounded-xl shadow-xl  "
           >
-            <TreeMap />
+            <TreeMapHand />
           </div>
-        </div>
+        </div> */}
       </div>
     </div>
   )

@@ -22,6 +22,7 @@ export interface CommonState {
   common: string
   news: string
   scroll: number
+  treeMapRequestResult: { status: string; data: any; error: any }
 }
 
 const initialState: CommonState = {
@@ -35,45 +36,29 @@ const initialState: CommonState = {
   common: '',
   news: '',
   scroll: 0,
+  treeMapRequestResult: { status: 'idel', data: null, error: null },
 }
 
-//async reducers
-// export const portfoliTtracker = createAsyncThunk(
-//   "wallet/portfoliTtracker",
-//   async (
-//     {
-//       dataUser,
-//       startDate,
-//       endDate,
-//       initialValue,
-//     }: { dataUser: any; startDate: any; endDate: any; initialValue: any },
-//     { rejectWithValue, fulfillWithValue }
-//   ) => {
-//     try {
-//       const response = await axios({
-//         method: "POST",
-//         url: `http://65.21.255.228/api/portfolio/portfolio_tracker/`,
-//         data: {
-//           user_potfolio: dataUser,
-//           start_date: `${Number(startDate.year)}-${Number(
-//             startDate.month
-//           )}-${Number(startDate.day)}`,
-//           end_date: `${Number(endDate.year)}-${Number(endDate.month)}-${Number(
-//             endDate.day
-//           )}`,
-//           initial_value: initialValue,
-//         },
-//         headers: { accept: "*/*", "Content-Type": "application/json" },
-//       });
-//       if (response.status == 200) {
-//         return fulfillWithValue(response.data);
-//       }
-//       return rejectWithValue(response.data);
-//     } catch (err) {
-//       return rejectWithValue(err);
-//     }
-//   }
-// );
+// async reducers
+export const treeMap = createAsyncThunk(
+  'common/treeMap',
+  async (user, { rejectWithValue, fulfillWithValue }) => {
+    try {
+      const response = await axios({
+        method: 'get',
+        url: `http://65.21.255.228/api/heatmap/`,
+
+        headers: { accept: '*/*', 'Content-Type': 'application/json' },
+      })
+      if (response.status == 200) {
+        return fulfillWithValue(response.data)
+      }
+      return rejectWithValue(response.data)
+    } catch (err) {
+      return rejectWithValue(err)
+    }
+  }
+)
 
 export const commonSlice = createSlice({
   name: 'common',
@@ -112,33 +97,32 @@ export const commonSlice = createSlice({
 
     hardReset: () => initialState,
   },
-  // extraReducers: {
-  //   // [portfoliTtracker.pending.type]: (state, action) => {
-  //   //   // getPreDataRequestIsPending();
-  //   //   state.portfoliTtrackerRequestResult = {
-  //   //     status: "pending",
-  //   //     data: null,
-  //   //     error: null,
-  //   //   };
-  //   // },
-  //   // [portfoliTtracker.fulfilled.type]: (state, action) => {
-  //   //   // getPreDataWasSuccessfull();
-  //   //   state.portfoliTtrackerRequestResult = {
-  //   //     status: "fulfilled",
-  //   //     data: action.payload,
-  //   //     error: null,
-  //   //   };
-  //   // },
-  //   // [portfoliTtracker.rejected.type]: (state, action) => {
-  //   //   // getPreDataRequestHasError(action.error.message);
-  //   //   state.portfoliTtrackerRequestResult = {
-  //   //     status: "rejected",
-  //   //     data: null,
-  //   //     error: action.error,
-  //   //   };
-  //   // },
-
-  // },
+  extraReducers: {
+    [treeMap.pending.type]: (state, action) => {
+      // getPreDataRequestIsPending();
+      state.treeMapRequestResult = {
+        status: 'pending',
+        data: null,
+        error: null,
+      }
+    },
+    [treeMap.fulfilled.type]: (state, action) => {
+      // getPreDataWasSuccessfull();
+      state.treeMapRequestResult = {
+        status: 'fulfilled',
+        data: action.payload,
+        error: null,
+      }
+    },
+    [treeMap.rejected.type]: (state, action) => {
+      // getPreDataRequestHasError(action.error.message);
+      state.treeMapRequestResult = {
+        status: 'rejected',
+        data: null,
+        error: action.error,
+      }
+    },
+  },
 })
 
 export const {
@@ -164,5 +148,7 @@ export const selectShowDrawer = (state: AppState) => state.common.showDrawer
 export const selectNews = (state: AppState) => state.common.news
 export const selectProfile = (state: AppState) => state.common.common
 export const selectScroll = (state: AppState) => state.common.scroll
+export const selectTreeMapRequestResult = (state: AppState) =>
+  state.common.treeMapRequestResult
 
 export default commonSlice.reducer
